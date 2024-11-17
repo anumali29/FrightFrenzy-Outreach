@@ -107,7 +107,6 @@ public class FrightFrenzy extends LinearOpMode {
             intakeMotor.setPower(-1 * (gamepad1.right_stick_y));
 
             elevatorPosition = Range.clip(elevatorPosition, 0, 1);
-            elevatorPosition = Range.clip(elevatorPosition, 0, 1);
             slidePosition = Range.clip(slidePosition, 0, 1);
             scorePosition = Range.clip(scorePosition, 0, 1);
             slideLeft.setPosition(elevatorPosition);
