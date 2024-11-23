@@ -37,12 +37,12 @@ public class FrightFrenzy extends LinearOpMode {
         fR = hardwareMap.get(DcMotor.class, "frontRight");
         bL = hardwareMap.get(DcMotor.class, "backLeft");
         bR = hardwareMap.get(DcMotor.class, "backRight");
-        intakeMotor = hardwareMap.get(DcMotor.class, "intake");
+        intakeMotor = hardwareMap.get(DcMotor.class, "intakeMotor");
         imu = hardwareMap.get(Gyroscope.class, "imu");
         slideLeft = hardwareMap.get(Servo.class, "slideLeft");
         slideRight = hardwareMap.get(Servo.class, "slideRight");
-        slide = hardwareMap.get(Servo.class, "intakeLift");
-        cubeScore = hardwareMap.get(Servo.class, "pixelScore");
+        slide = hardwareMap.get(Servo.class, "bringBack");
+        cubeScore = hardwareMap.get(Servo.class, "cubeScore");
 
         fL.setDirection(DcMotorSimple.Direction.REVERSE);
         fR.setDirection(DcMotorSimple.Direction.FORWARD);
@@ -78,28 +78,28 @@ public class FrightFrenzy extends LinearOpMode {
             bL.setPower(0.6 * (forward - strafe + rotate));
             bR.setPower(0.6 * (forward + strafe - rotate));
 
-            telemetry.addData("Forward", forward);
-            telemetry.addData("Strafe", strafe);
-            telemetry.addData("Rotate", rotate);
-            telemetry.update();
+//            telemetry.addData("Forward", forward);
+//            telemetry.addData("Strafe", strafe);
+//            telemetry.addData("Rotate", rotate);
+//            telemetry.update();
 
-            if (gamepad1.right_bumper){ //moves up
+            if (gamepad1.right_bumper){ //moves elevator up
                 elevatorPosition = 1;
             }
-            else if (gamepad1.left_bumper){ //moves down
+            else if (gamepad1.left_bumper){ //moves elevator down
                 elevatorPosition = 0;
             }
 
-            if(gamepad1.y){ //box moves horizontal
+            if(gamepad1.y){
                 scorePosition = 0.4;
             }
 
-            if(gamepad1.right_trigger > 0.5){ //slides back
+            if(gamepad1.right_trigger > 0.5){ //scores
                 slidePosition = 0.25;
                 scorePosition = 0.75;
             }
 
-            if(gamepad1.left_trigger > 0.5){ //scores
+            if(gamepad1.left_trigger > 0.5){ //unscores lol
                 slidePosition = 0.6;
                 scorePosition = 0.07;
             }
@@ -116,7 +116,7 @@ public class FrightFrenzy extends LinearOpMode {
 
 //            telemetry.addData("slideLeft position", elevatorPosition);
 //            telemetry.addData("slideRight position", 1 - elevatorPosition);
-//            telemetry.addData("slide position", slidePosition);
+            telemetry.addData("slide position", slidePosition);
 //            telemetry.addData("cubeScore position", scorePosition);
 
             telemetry.update();

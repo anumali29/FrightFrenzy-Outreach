@@ -6,6 +6,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.IMU;
+import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
@@ -16,6 +17,11 @@ public class Drivetrain {
     private DcMotor fR;
     private DcMotor bL;
     private DcMotor bR;
+    private Servo slideLeft;
+    private Servo slideRight;
+    private Servo slide;
+    private Servo cubeScore;
+
     IMU imu;
     YawPitchRollAngles ypr;
 
@@ -26,6 +32,10 @@ public class Drivetrain {
         fR = hardwareMap.get(DcMotor.class, "frontRight");
         bL = hardwareMap.get(DcMotor.class, "backLeft");
         bR = hardwareMap.get(DcMotor.class, "backRight");
+        slideLeft = hardwareMap.get(Servo.class, "slideLeft");
+        slideRight = hardwareMap.get(Servo.class, "slideRight");
+        slide = hardwareMap.get(Servo.class, "bringBack");
+        cubeScore = hardwareMap.get(Servo.class, "pixelScore");
         IMU.Parameters parameters = new IMU.Parameters(
                 new RevHubOrientationOnRobot(
                         RevHubOrientationOnRobot.LogoFacingDirection.UP,
@@ -295,5 +305,7 @@ public class Drivetrain {
         while (t.milliseconds() < ms){}
         t.reset();
     }
+
+
 
 }
