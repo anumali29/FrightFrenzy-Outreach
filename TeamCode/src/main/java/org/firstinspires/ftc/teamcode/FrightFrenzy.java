@@ -83,23 +83,23 @@ public class FrightFrenzy extends LinearOpMode {
             telemetry.addData("Rotate", rotate);
             telemetry.update();
 
-            if (gamepad1.right_bumper) {
+            if (gamepad1.right_bumper){ //moves up
                 elevatorPosition = 1;
             }
-            else if (gamepad1.left_bumper) {
+            else if (gamepad1.left_bumper){ //moves down
                 elevatorPosition = 0;
             }
 
-            if(gamepad1.y){
+            if(gamepad1.y){ //box moves horizontal
                 scorePosition = 0.4;
             }
 
-            if(gamepad1.right_trigger > 0.5){
+            if(gamepad1.right_trigger > 0.5){ //slides back
                 slidePosition = 0.25;
                 scorePosition = 0.75;
             }
 
-            if(gamepad1.left_trigger > 0.5){
+            if(gamepad1.left_trigger > 0.5){ //scores
                 slidePosition = 0.6;
                 scorePosition = 0.07;
             }
