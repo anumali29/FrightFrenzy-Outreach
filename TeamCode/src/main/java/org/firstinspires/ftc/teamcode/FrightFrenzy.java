@@ -120,62 +120,12 @@ public class FrightFrenzy extends LinearOpMode {
 
 //            telemetry.addData("slideLeft position", elevatorPosition);
 //            telemetry.addData("slideRight position", 1 - elevatorPosition);
-            telemetry.addData("slide position", slidePosition);
+//            telemetry.addData("slide position", slidePosition);
 //            telemetry.addData("cubeScore position", scorePosition);
-            telemetry.addData("red", sampleDetection("red"));
-            telemetry.addData("blue", sampleDetection("blue"));
-            telemetry.addData("red v", colorVals("red"));
-            telemetry.addData("blue v", colorVals("blue"));
-            telemetry.addData("green v", colorVals("g"));
 
             telemetry.update();
 
         }
 
-    }
-
-    public double colorVals(String alliance) {
-        double r = colorSensor.red();
-        double g = colorSensor.green();
-        double b = colorSensor.blue();
-
-        if (alliance.equals("red")) {
-            return r;
-        } else if (alliance.equals("blue")) {
-            return b;
-        }
-        return g;
-    }
-
-    public boolean sampleDetection(String alliance) {
-        double r = colorSensor.red();
-        double g = colorSensor.green();
-        double b = colorSensor.blue();
-
-        if (alliance.equals("red") && ((r > g && r > b && r > 300) || (g > r && g > b && g > 300))) {
-            return true;
-        }
-        else if (alliance.equals("blue") && ((b > r && b > g && b > 300) || (g > r && g > b && g > 300))){
-            return true;
-        }
-        return false;
-//        boolean redTol = (r >= 180) && (r <= 255); //tolerances for yellow
-//        boolean greenTol = (g >= 160) && (g <= 240);
-//        boolean blueTol = (b >= 1) && (b <= 120);
-//
-//        if (alliance.equals("red")) {
-//            if((r > 120) && (g < 128) && (b < 128)){ //red
-//                return true;
-//            }
-//        }
-//        if (alliance.equals("blue")) {
-//            if((r < 128) && (g < 128) && (b > 180)){ //blue
-//                return true;
-//            }
-//        }
-//        else if (redTol && greenTol && blueTol){
-//            return true;
-//        }
-//        return false;
     }
 }
